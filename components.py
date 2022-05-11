@@ -40,6 +40,7 @@ class RSAEncoder(nn.Module):
         self.att1 = Attention(n_hidden,n_hidden)
         self.att2 = Attention(n_hidden,n_hidden)
         self.alpha = nn.Parameter(torch.tensor(0.1), requires_grad=True)
+        self.beta  = nn.Parameter(torch.tensor(0.9), requires_grad=True)
         self.mean_encoder = nn.Linear(n_hidden, n_output)
         self.var_encoder = nn.Linear(n_hidden, n_output)
 
@@ -55,7 +56,7 @@ class RSAEncoder(nn.Module):
         # Parameters for latent distribution
         q = self.encoder(x, *cat_list)
         qa = self.att1(q)
-        q =  torch.sigmoid(qa +float(self.alpha)*q)
+        q =  torch.sigmoid(float(self.beta)*qa +float(self.alpha)*q)
         # q = self.att2(q)
         q_m = self.mean_encoder(q)
         q_v = self.var_activation(self.var_encoder(q)) + self.var_eps
