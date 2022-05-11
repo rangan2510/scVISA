@@ -6,8 +6,8 @@ try:
     from utils import reparameterize_gaussian, identity
     from layers import Attention
 except:
-    from scvisa.utils import reparameterize_gaussian, identity
-    from scvisa.layers import Attention
+    from scVISA.utils import reparameterize_gaussian, identity
+    from scVISA.layers import Attention
 
 # Encoder
 class RSAEncoder(nn.Module):

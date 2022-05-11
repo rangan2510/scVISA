@@ -31,7 +31,7 @@ from typing import Callable, Iterable, List, Optional
 try:
     from components import RSAEncoder
 except:
-    from scvisa.components import RSAEncoder
+    from scVISA.components import RSAEncoder
 
 
 # VAE model

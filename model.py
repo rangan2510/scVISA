@@ -14,7 +14,7 @@ from scvi.data.fields import (
 try:
     from module import VAE
 except:
-    from scvi.module import VAE
+    from scVISA.module import VAE
 
 
 
